@@ -1,9 +1,6 @@
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/raferguson/Redirect-Tool/rachael)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/laughlin/automated-testing/master)
 
-RACHAELLLLLL RULEZZZZZ
-
-
-# master-lock-seo-scripts
+# Automated Testing Tools
 Holds Jupyter Notebooks containing python script used to automate the implementation and testing of SEO updates
 
 # How to run in browser
@@ -36,4 +33,4 @@ Once this is installed, open Jupyter Notebooks by going to your command prompt t
 
 `(master-lock-seo-scripts-env) $ jupyter notebook`
 
-This will open Jupyter Notebook in your browser. You can then navigate to this repo and select the repo. Then, 
+This will open Jupyter Notebook in your browser. You can then navigate to this repo and select the repo.

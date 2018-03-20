@@ -1,4 +1,6 @@
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/laughlin/automated-testing/master)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/laughlin/automated-testing/teresa)
+
+Teresa's Version
 
 # Automated Testing Tools
 Holds Jupyter Notebooks containing python script used to automate the implementation and testing of SEO updates

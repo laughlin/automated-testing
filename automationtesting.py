@@ -54,9 +54,9 @@ def check_seo_length(tag, min_length, max_length):
     if len(tag) >= min_length and len(tag) <= max_length:
         seo_result = OK
     elif len(tag) < min_length:
-        seo_result = "Too short, should be >= "+str(min_length)
+        seo_result = "Too short, should be >= "+str(min_length)+" char"
     else:
-        seo_result = "Too long, should be <= "+str(max_length)
+        seo_result = "Too long, should be <= "+str(max_length)+" char"
     return seo_result
 
 def check_seo_hops(hops):

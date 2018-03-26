@@ -1,9 +1,14 @@
 from bs4 import BeautifulSoup
 import urllib.request
 
+SSL = "https"
+NON_SSL = "http"
+NONE_SET = "n/a"
+OK = "OK"
+
 def check_matching(expected, actual):
     if actual == expected:
-        match_result = "OK"
+        match_result = OK
     else:
         match_result = "Expected and actual do not match"
     return match_result
@@ -33,7 +38,7 @@ def return_canonical(url):
     soup = BeautifulSoup(f.read(), 'html.parser')
 
     # Originally set canonical to be none. Need to override this if it does exist.
-    canonical = NO_CANONICAL_SET_STRING
+    canonical = NONE_SET
     
     # Find all html elements that are of type link. Then, for each of these elements, if it is a canonical
     # link, set this to be the canonical and break out of the loop. There can only be one canonical set so no need
@@ -43,13 +48,11 @@ def return_canonical(url):
             canonical = link.get('href')
             break
     return canonical
-    
-
 
 #--- Checking SEO ---#
 def check_seo_length(tag, min_length, max_length):
     if len(tag) >= min_length and len(tag) <= max_length:
-        seo_result = "OK"
+        seo_result = OK
     elif len(tag) < min_length:
         seo_result = "Too short, should be >= "+str(min_length)
     else:
@@ -61,13 +64,13 @@ def check_seo_hops(hops):
     if hops >= 3:
         seo_check = "Correct redirect, but hopped three times or more."
     else:
-        seo_check = "OK"
+        seo_check = OK
     return seo_check
 
 
 #--- Involves adjusting urls for environment or parsing---#
-def change_env(url, is_ml_review, base):
-    url = return_full_clean_path(url, base)
+def change_env(url, is_ml_review, is_ssl):
+    url = return_full_clean_path(url, is_ssl)
     if is_ml_review:
         url = change_to_review(url) 
     else:
@@ -85,15 +88,19 @@ def change_to_review(url):
     review_url = "".join([basic_path[0],'review', basic_path[1]])
     return review_url
 
-def get_base(ssl):
-    if ssl: base = SSL    
+def get_base(is_ssl):
+    if is_ssl: base = SSL
     else: base = NON_SSL
     return base
 
-def return_full_clean_path(url, ssl):
+def return_full_clean_path(url, is_ssl):
     '''Adds the full url path if none was defined on the input file.'''
-    base = get_base(ssl)
+    base = get_base(is_ssl)
     url = url.strip().rstrip('/')
     if "//" not in url:
         url = "".join([base,"://",url])
     return url
+
+#--- Getting constant results ---#
+def get_okay():
+    return OK

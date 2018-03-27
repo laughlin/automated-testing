@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib.request
+import requests
 
 SSL = "https"
 NON_SSL = "http"
@@ -12,6 +13,12 @@ def check_matching(expected, actual):
     else:
         match_result = "Expected and actual do not match"
     return match_result
+
+def get_status_code(url):
+    try:
+        return requests.get(url).status_code
+    except:
+        return "Error"
 
 #--- Parsing the url output to get a tag or link ---#
 def return_tag(url, tag):
@@ -101,6 +108,3 @@ def return_full_clean_path(url, is_ssl):
         url = "".join([base,"://",url])
     return url
 
-#--- Getting constant results ---#
-def get_okay():
-    return OK

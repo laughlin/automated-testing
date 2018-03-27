@@ -36,6 +36,7 @@ $ source activate automated-testing-tools-env
 (automated-testing-tools-env) $ jupyter notebook
 
 WINDOWS Anaconda Command Prompt
+
 conda env create automated-testing-tools-env -f requirements.txt
 activate automated-testing-tools-env
 (automated-testing-tools-env) jupyter notebook
@@ -60,5 +61,6 @@ MAC
 (automated-testing-tools-env) $ source deactivate
 
 WINDOWS Anaconda Prompt
+
 (automated-testing-tools-env) deactivate
 ```
